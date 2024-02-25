@@ -1,5 +1,8 @@
 package org.example;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ImmutableClassExample {
     /**
      * Private and final fields
@@ -12,6 +15,19 @@ public class ImmutableClassExample {
     private final String name;
     private final int age;
 
+    private final HashMap<String, String> map;
+
+    public ImmutableClassExample(String name, int age, HashMap<String, String> map) {
+        this.name = name;
+        this.age = age;
+
+        HashMap<String, String> tempMap = new HashMap<>();
+        for (Map.Entry<String, String> entry : map.entrySet()) {
+            tempMap.put(entry.getKey(), entry.getValue());
+        }
+        this.map = tempMap;
+    }
+
     public String getName() {
         return name;
     }
@@ -20,14 +36,22 @@ public class ImmutableClassExample {
         return age;
     }
 
-    public ImmutableClassExample(String name, int age) {
-        this.name = name;
-        this.age = age;
+    public HashMap<String, String> getMap() {
+        return (HashMap<String, String>) map.clone();
     }
 
+}
+
+class MainClass {
     public static void main(String[] args) {
-        ImmutableClassExample immutableClassExample = new ImmutableClassExample("Reddy", 27);
+        ImmutableClassExample immutableClassExample = new ImmutableClassExample("Reddy", 27, new HashMap<>() {
+            {
+                put("1", "Apple");
+                put("2", "Banana");
+            }
+        });
 
         System.out.println("Age: " + immutableClassExample.getAge());
+        System.out.println("Map: " + immutableClassExample.getMap());
     }
 }
