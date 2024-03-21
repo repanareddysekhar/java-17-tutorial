@@ -1,0 +1,19 @@
+What are annotations?
+Annotations in Java are a form of metadata, providing information about the code to the compiler, runtime, or other tools.
+They are represented by the @ symbol followed by the annotation name. Some built-in annotations in Java include @Override, @Deprecated, and @SuppressWarnings.
+aS
+Annotations are processed at compile time or runtime depending on the Retention policy.
+The retention policy is specified using @Retention annotation.
+It can be SOURCE, CLASS, RUNTIME.
+
+
+The @Target annotation specifies the types of program elements to which an annotation can be applied
+Type -> Class, interface or enumeration
+Field -> Field
+Method -> Method
+Constructor -> Constructor
+Local_Variable -> Local variable
+Annotation_Type -> Annotation Type
+Package -> PACKAGE
+Type_Parameter -> Type Parameter
+Parameter -> Formal Parameter
